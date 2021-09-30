@@ -12,7 +12,7 @@ import {share} from "rxjs/operators";
 export class AppComponent implements OnInit{
 
   title = 'frontend';
-  public UserList: User[] | undefined;
+  public UserList: User[]
   constructor(private httpClient: HttpClient) {
     this.httpClient = httpClient
   }

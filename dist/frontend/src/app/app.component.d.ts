@@ -4,7 +4,7 @@ import { User } from "./user";
 export declare class AppComponent implements OnInit {
     private httpClient;
     title: string;
-    UserList: User[] | undefined;
+    UserList: User[];
     constructor(httpClient: HttpClient);
     ngOnInit(): void;
 }
