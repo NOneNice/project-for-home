@@ -3,12 +3,16 @@ import {AppModule} from "./app.module";
 import {DocumentBuilder, SwaggerModule} from "@nestjs/swagger";
 
 
+async function bootstrap() {
+    const app = await NestFactory.create(AppModule,{cors:true});
+    await app.listen(5000)
+}
+
 async function start() {
             const PORT = process.env.PORT || 5000;
             const app = await NestFactory.create(AppModule)
-            const corsMiddleware = require('/src/middleware/cros.middleware')
-            app.use(corsMiddleware)
 
+            await bootstrap();
             const config = new DocumentBuilder()
                 .setTitle('Практика')
                 .setDescription('Документация REST API')
