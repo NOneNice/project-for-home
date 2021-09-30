@@ -15,25 +15,13 @@ const http_1 = require("@angular/common/http");
 let AppComponent = class AppComponent {
     constructor(httpClient) {
         this.httpClient = httpClient;
-        this.name = '';
-        this.departmentId = '';
+        this.title = 'frontend';
         this.httpClient = httpClient;
     }
     ngOnInit() {
         this.httpClient.get('http://localhost:5000/users')
-            .subscribe(userList => {
-            this.userList = userList;
-        });
-    }
-    OnCreate() {
-        this.httpClient.post('http://localhost:5000/users', {
-            name: this.name,
-            departmentId: this.departmentId
-        })
-            .subscribe(user => {
-            this.userList.push(user);
-            this.name = '';
-            this.departmentId = '';
+            .subscribe(UserList => {
+            this.UserList = UserList;
         });
     }
 };

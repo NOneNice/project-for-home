@@ -10,17 +10,19 @@ import {share} from "rxjs/operators";
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit{
-  User$: Observable<User>=this.getNames();
 
   title = 'frontend';
+  public UserList: User[] | undefined;
+  constructor(private httpClient: HttpClient) {
+    this.httpClient = httpClient
+  }
 
-  constructor(private http: HttpClient) { }
 
-
-  ngOnInit(): void {     }
-
-  getNames():Observable<User>{
-    return this.http.get<User>('http://localhost:5000/users').pipe(share());
+  ngOnInit(): void {
+    this.httpClient.get<User[]>('http://localhost:5000/users')
+      .subscribe(UserList=>{
+        this.UserList = UserList;
+      })
   }
 
 }

@@ -4,6 +4,18 @@
   <button>Users</button>
   <button>Departments</button>
 
+  <ul>
+    <li *ngFor = "let user of UserList">
+      <span> {{user.name}}</span>
+      <span> {{user.id}}</span>
+    </li>
+  </ul>
+
+
+
+
+
+  <!--
 <<nz-table #basicTable [nzData]="User$ | async">
   <thead>
   <tr>
@@ -18,4 +30,5 @@
   </tr>
   </tbody>
 </nz-table>
+-->
 

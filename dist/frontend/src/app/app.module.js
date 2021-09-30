@@ -12,7 +12,6 @@ const platform_browser_1 = require("@angular/platform-browser");
 const app_routing_module_1 = require("./app-routing.module");
 const app_component_1 = require("./app.component");
 const http_1 = require("@angular/common/http");
-const common_1 = require("@angular/common");
 const forms_1 = require("@angular/forms");
 let AppModule = class AppModule {
 };
@@ -22,11 +21,10 @@ AppModule = __decorate([
             app_component_1.AppComponent
         ],
         imports: [
-            forms_1.FormsModule,
             platform_browser_1.BrowserModule,
             app_routing_module_1.AppRoutingModule,
             http_1.HttpClientModule,
-            common_1.CommonModule
+            forms_1.FormsModule
         ],
         providers: [],
         bootstrap: [app_component_1.AppComponent]

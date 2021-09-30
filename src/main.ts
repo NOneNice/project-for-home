@@ -6,6 +6,8 @@ import {DocumentBuilder, SwaggerModule} from "@nestjs/swagger";
 async function start() {
             const PORT = process.env.PORT || 5000;
             const app = await NestFactory.create(AppModule)
+            const corsMiddleware = require('/src/middleware/cros.middleware')
+            app.use(corsMiddleware)
 
             const config = new DocumentBuilder()
                 .setTitle('Практика')
