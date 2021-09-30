@@ -1,34 +1,31 @@
 <h1>Привет</h1>
 
-<form action="#">
-  <button>Users</button>
-  <button>Departments</button>
-
-  <ul>
-    <li *ngFor = "let user of UserList">
-      <span> {{user.name}}</span>
-      <span> {{user.id}}</span>
-    </li>
-  </ul>
-
-
-
-
-
-  <!--
-<<nz-table #basicTable [nzData]="User$ | async">
+<button *ngIf = "isCollapsed"(click)="toggleCollapse()">Отоброзить User</button>
+<button *ngIf = "!isCollapsed"(click)="toggleCollapse()">Спрятать</button>
+<div *ngIf = "!isCollapsed">
   <thead>
-  <tr>
-    <th>Name</th>
-    <th>Age</th>
-  </tr>
+  <th scope="col">Имя </th>
+  <th> Id Работника: </th>
+  <th> </th>
+  <th> Id Отдела в котором работает:</th>
   </thead>
-  <tbody>
-  <tr *ngFor="let data of basicTable.data">
-    <td>{{ data.name }}</td>
-    <td>{{ data.id }}</td>
+  <tr *ngFor = "let user of UserList">
+    <td> {{user.name}} </td>
+    <td> {{user.id}} </td>
+    <td>{{user.departmentId}} </td>
   </tr>
-  </tbody>
-</nz-table>
--->
+</div>
+
+<button *ngIf = "isCollapsedDep"(click)="toggleCollapseDep()">Отоброзить Departmen</button>
+<button *ngIf = "!isCollapsedDep"(click)="toggleCollapseDep()">Спрятать</button>
+<div *ngIf = "!isCollapsedDep">
+  <thead>
+  <th scope="col">id Отдела: </th>
+  <th> Название отдела: </th>
+  </thead>
+  <tr *ngFor = "let departmen of DepartmenList">
+    <td> {{departmen.id}} </td>
+    <td> {{departmen.name}}</td>
+  </tr>
+</div>
 

@@ -15,13 +15,25 @@ const http_1 = require("@angular/common/http");
 let AppComponent = class AppComponent {
     constructor(httpClient) {
         this.httpClient = httpClient;
+        this.isCollapsed = true;
+        this.isCollapsedDep = true;
         this.title = 'frontend';
         this.httpClient = httpClient;
+    }
+    toggleCollapse() {
+        this.isCollapsed = !this.isCollapsed;
+    }
+    toggleCollapseDep() {
+        this.isCollapsedDep = !this.isCollapsedDep;
     }
     ngOnInit() {
         this.httpClient.get('http://localhost:5000/users')
             .subscribe(UserList => {
             this.UserList = UserList;
+        });
+        this.httpClient.get('http://localhost:5000/departments')
+            .subscribe(DepartmenList => {
+            this.DepartmenList = DepartmenList;
         });
     }
 };
