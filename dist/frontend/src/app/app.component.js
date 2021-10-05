@@ -15,6 +15,9 @@ const http_1 = require("@angular/common/http");
 let AppComponent = class AppComponent {
     constructor(httpClient) {
         this.httpClient = httpClient;
+        this.name = '';
+        this.departmentId = '';
+        this.nameDep = '';
         this.isCollapsed = true;
         this.isCollapsedDep = true;
         this.title = 'frontend';
@@ -35,6 +38,28 @@ let AppComponent = class AppComponent {
             .subscribe(DepartmenList => {
             this.DepartmenList = DepartmenList;
         });
+    }
+    onCreat() {
+        if (this.name && this.departmentId)
+            this.httpClient.post('http://localhost:5000/users', {
+                name: this.name,
+                departmentId: this.departmentId
+            })
+                .subscribe(User => {
+                this.UserList.push(User);
+                this.name = '';
+                this.departmentId = '';
+            });
+    }
+    onCreatDep() {
+        if (this.nameDep)
+            this.httpClient.post('http://localhost:5000/departments', {
+                name: this.nameDep
+            })
+                .subscribe(Departmen => {
+                this.DepartmenList.push(Departmen);
+                this.nameDep = '';
+            });
     }
 };
 AppComponent = __decorate([

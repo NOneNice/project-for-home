@@ -11,6 +11,9 @@ import {Departmen} from "./departmen";
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit{
+  public name = '';
+  public departmentId = '';
+  public nameDep = '';
   isCollapsed : boolean = true;
   isCollapsedDep : boolean = true;
   title = 'frontend';
@@ -36,5 +39,29 @@ export class AppComponent implements OnInit{
         this.DepartmenList = DepartmenList;
       })
   }
+  onCreat(): void{
+    if (this.name && this.departmentId)
+    this.httpClient.post<User>('http://localhost:5000/users',
+      {
+            name : this.name,
+            departmentId : this.departmentId
+      } )
+      .subscribe(User=>{
+        this.UserList.push(User);
+        this.name = '';
+        this.departmentId = '';
+      })
+  }
 
+  onCreatDep(): void{
+    if (this.nameDep)
+      this.httpClient.post<Departmen>('http://localhost:5000/departments',
+        {
+          name : this.nameDep
+        } )
+        .subscribe(Departmen=>{
+          this.DepartmenList.push(Departmen);
+          this.nameDep = '';
+        })
+  }
 }
