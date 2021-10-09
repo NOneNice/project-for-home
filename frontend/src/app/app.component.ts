@@ -64,4 +64,12 @@ export class AppComponent implements OnInit{
           this.nameDep = '';
         })
   }
+
+  onRemove(UserDeleted : User){
+      this.httpClient.delete<void>(
+        'http://localhost:5000/users/' + UserDeleted.id
+      ).subscribe(() => {
+        this.UserList = this.UserList.filter(User => User.id !== UserDeleted.id);
+      })
+  }
 }

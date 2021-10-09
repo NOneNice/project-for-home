@@ -61,6 +61,11 @@ let AppComponent = class AppComponent {
                 this.nameDep = '';
             });
     }
+    onRemove(UserDeleted) {
+        this.httpClient.delete('http://localhost:5000/users/' + UserDeleted.id).subscribe(() => {
+            this.UserList = this.UserList.filter(User => User.id !== UserDeleted.id);
+        });
+    }
 };
 AppComponent = __decorate([
     (0, core_1.Component)({

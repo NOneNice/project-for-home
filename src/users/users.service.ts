@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import {Injectable} from '@nestjs/common';
 import {InjectModel} from "@nestjs/sequelize";
 import {User} from "./users.model";
 import {CreateUserDto} from "./dto/create-user.dto";
@@ -6,16 +6,19 @@ import {CreateUserDto} from "./dto/create-user.dto";
 @Injectable()
 export class UsersService {
 
-    constructor(@InjectModel(User) private UserRepository: typeof User) {
-    }
+    constructor(@InjectModel(User) private UserRepository: typeof User) { }
 
     async createUser(dto: CreateUserDto){
-        const user = await this.UserRepository.create(dto);
-        return user;
+        return await this.UserRepository.create(dto);
     }
 
     async getAllUsers(){
-        const users = await this.UserRepository.findAll();
-        return users;
+        return await this.UserRepository.findAll();
+    }
+    async remove(userId : number) {
+        return await this.UserRepository.destroy({
+            where : {id : userId},
+            force : true
+        });
     }
 }

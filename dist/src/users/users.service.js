@@ -21,12 +21,16 @@ let UsersService = class UsersService {
         this.UserRepository = UserRepository;
     }
     async createUser(dto) {
-        const user = await this.UserRepository.create(dto);
-        return user;
+        return await this.UserRepository.create(dto);
     }
     async getAllUsers() {
-        const users = await this.UserRepository.findAll();
-        return users;
+        return await this.UserRepository.findAll();
+    }
+    async remove(userId) {
+        return await this.UserRepository.destroy({
+            where: { id: userId },
+            force: true
+        });
     }
 };
 UsersService = __decorate([

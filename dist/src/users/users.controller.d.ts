@@ -6,4 +6,5 @@ export declare class UsersController {
     constructor(usersService: UsersService);
     creat(userDto: CreateUserDto): Promise<User>;
     getAll(): Promise<User[]>;
+    remove(id: number): Promise<number>;
 }

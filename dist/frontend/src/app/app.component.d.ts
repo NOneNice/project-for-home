@@ -18,4 +18,5 @@ export declare class AppComponent implements OnInit {
     ngOnInit(): void;
     onCreat(): void;
     onCreatDep(): void;
+    onRemove(UserDeleted: User): void;
 }
