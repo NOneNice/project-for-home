@@ -41,16 +41,16 @@ export class AppComponent implements OnInit{
   }
   onCreat(): void{
     if (this.name && this.departmentId)
-    this.httpClient.post<User>('http://localhost:5000/users',
-      {
-            name : this.name,
-            departmentId : this.departmentId
-      } )
-      .subscribe(User=>{
-        this.UserList.push(User);
-        this.name = '';
-        this.departmentId = '';
-      })
+      this.httpClient.post<User>('http://localhost:5000/users',
+        {
+          name : this.name,
+          departmentId : this.departmentId
+        } )
+        .subscribe(User=>{
+          this.UserList.push(User);
+          this.name = '';
+          this.departmentId = '';
+        })
   }
 
   onCreatDep(): void{
@@ -66,10 +66,18 @@ export class AppComponent implements OnInit{
   }
 
   onRemove(UserDeleted : User){
-      this.httpClient.delete<void>(
-        'http://localhost:5000/users/' + UserDeleted.id
-      ).subscribe(() => {
-        this.UserList = this.UserList.filter(User => User.id !== UserDeleted.id);
-      })
+    this.httpClient.delete<void>(
+      'http://localhost:5000/users/' + UserDeleted.id
+    ).subscribe(() => {
+      this.UserList = this.UserList.filter(User => User.id !== UserDeleted.id);
+    })
   }
+   onRemoveDep(DepDeleted: Departmen){
+   this.httpClient.delete<void>(
+     'http://localhost:5000/departments/' + DepDeleted.id
+   ).subscribe(()=>{
+     this.DepartmenList = this.DepartmenList.filter(Department => Department.id !== DepDeleted.id);
+   })
+ }
+
 }

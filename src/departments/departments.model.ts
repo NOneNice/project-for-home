@@ -10,7 +10,7 @@ interface DepartmentCreationAttrs {
 export class Department extends Model<Department, DepartmentCreationAttrs>{
 
     @ApiProperty({description: 'Уникальный id'})
-    @Column({type: DataType.INTEGER, unique:true, autoIncrement:true, primaryKey:true})
+    @Column({type: DataType.INTEGER, unique:true, autoIncrement:true, primaryKey:true,onDelete: 'CASCADE'})
     id:number;
 
     @ApiProperty({description:'Введите название отдела' })

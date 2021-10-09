@@ -18,6 +18,7 @@ export class UsersService {
     async remove(userId : number) {
         return await this.UserRepository.destroy({
             where : {id : userId},
+            cascade : true,
             force : true
         });
     }

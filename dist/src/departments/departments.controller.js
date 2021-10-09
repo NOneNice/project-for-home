@@ -28,6 +28,9 @@ let DepartmentsController = class DepartmentsController {
     getByName(name) {
         return this.departmentsService.getAllDepartments();
     }
+    remove(id) {
+        return this.departmentsService.remove(id);
+    }
 };
 __decorate([
     (0, swagger_1.ApiOperation)({ summary: 'Создать отдел' }),
@@ -44,6 +47,13 @@ __decorate([
     __metadata("design:paramtypes", [String]),
     __metadata("design:returntype", void 0)
 ], DepartmentsController.prototype, "getByName", null);
+__decorate([
+    (0, common_1.Delete)(':id'),
+    __param(0, (0, common_1.Param)('id')),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Number]),
+    __metadata("design:returntype", void 0)
+], DepartmentsController.prototype, "remove", null);
 DepartmentsController = __decorate([
     (0, common_1.Controller)('departments'),
     __metadata("design:paramtypes", [departments_service_1.DepartmentsService])

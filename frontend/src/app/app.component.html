@@ -37,6 +37,7 @@
   <tr *ngFor = "let departmen of DepartmenList">
     <td> {{departmen.id}} </td>
     <td> {{departmen.name}}</td>
+    <td><button (click)="onRemoveDep(departmen)" >Удалить</button></td>
   </tr>
 </div>
 

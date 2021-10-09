@@ -19,4 +19,5 @@ export declare class AppComponent implements OnInit {
     onCreat(): void;
     onCreatDep(): void;
     onRemove(UserDeleted: User): void;
+    onRemoveDep(DepDeleted: Departmen): void;
 }

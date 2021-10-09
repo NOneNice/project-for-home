@@ -29,6 +29,7 @@ let UsersService = class UsersService {
     async remove(userId) {
         return await this.UserRepository.destroy({
             where: { id: userId },
+            cascade: true,
             force: true
         });
     }

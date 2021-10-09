@@ -19,7 +19,7 @@ export class User extends Model<User, UserCreationAttrs>{
     name: string;
 
     @ForeignKey(()=> Department)
-    @Column({type: DataType.INTEGER})
+    @Column({type: DataType.INTEGER,onDelete: 'CASCADE'})
     departmentId: number
 
 

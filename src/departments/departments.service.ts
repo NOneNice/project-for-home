@@ -18,4 +18,9 @@ export class DepartmentsService {
         const department = await this.DepartmenRepository.findAll();
         return department;
     }
+    async remove(DepId : number) {
+        return await this.DepartmenRepository.destroy({
+            where : {id : DepId},
+        });
+    }
 }

@@ -17,7 +17,7 @@ let Department = class Department extends sequelize_typescript_1.Model {
 };
 __decorate([
     (0, swagger_1.ApiProperty)({ description: 'Уникальный id' }),
-    (0, sequelize_typescript_1.Column)({ type: sequelize_typescript_1.DataType.INTEGER, unique: true, autoIncrement: true, primaryKey: true }),
+    (0, sequelize_typescript_1.Column)({ type: sequelize_typescript_1.DataType.INTEGER, unique: true, autoIncrement: true, primaryKey: true, onDelete: 'CASCADE' }),
     __metadata("design:type", Number)
 ], Department.prototype, "id", void 0);
 __decorate([

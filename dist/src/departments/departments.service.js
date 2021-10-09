@@ -28,6 +28,11 @@ let DepartmentsService = class DepartmentsService {
         const department = await this.DepartmenRepository.findAll();
         return department;
     }
+    async remove(DepId) {
+        return await this.DepartmenRepository.destroy({
+            where: { id: DepId },
+        });
+    }
 };
 DepartmentsService = __decorate([
     (0, common_1.Injectable)(),

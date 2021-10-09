@@ -66,6 +66,11 @@ let AppComponent = class AppComponent {
             this.UserList = this.UserList.filter(User => User.id !== UserDeleted.id);
         });
     }
+    onRemoveDep(DepDeleted) {
+        this.httpClient.delete('http://localhost:5000/departments/' + DepDeleted.id).subscribe(() => {
+            this.DepartmenList = this.DepartmenList.filter(Department => Department.id !== DepDeleted.id);
+        });
+    }
 };
 AppComponent = __decorate([
     (0, core_1.Component)({

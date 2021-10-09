@@ -1,4 +1,4 @@
-import {Body, Controller, Get, Param, Post} from '@nestjs/common';
+import {Body, Controller, Delete, Get, Param, Post} from '@nestjs/common';
 import {CreatDepartmenDto} from "./dto/creat-departmen.dto";
 import {DepartmentsService} from "./departments.service";
 import {ApiOperation, ApiResponse} from "@nestjs/swagger";
@@ -18,6 +18,11 @@ export class DepartmentsController {
     @Get()
     getByName(name:string){
         return this.departmentsService.getAllDepartments();
+    }
+    @Delete(':id')
+    remove(@Param('id') id : number)
+    {
+        return this.departmentsService.remove(id);
     }
 
 
