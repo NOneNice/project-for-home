@@ -11,6 +11,8 @@ export declare class AppComponent implements OnInit {
     isCollapsedDep: boolean;
     title: string;
     UserList: User[];
+    UserGet: User[];
+    UserGetId: User["departmentId"];
     DepartmenList: Departmen[];
     constructor(httpClient: HttpClient);
     toggleCollapse(): void;

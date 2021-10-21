@@ -10,6 +10,9 @@ import {User} from "../users/users.model";
   controllers: [DepartmentsController],
   imports: [
       SequelizeModule.forFeature([Department,User])
-  ]
+  ],
+    exports: [
+        DepartmentsService
+    ]
 })
 export class DepartmentsModule {}

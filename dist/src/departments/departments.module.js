@@ -21,6 +21,9 @@ DepartmentsModule = __decorate([
         controllers: [departments_controller_1.DepartmentsController],
         imports: [
             sequelize_1.SequelizeModule.forFeature([departments_model_1.Department, users_model_1.User])
+        ],
+        exports: [
+            departments_service_1.DepartmentsService
         ]
     })
 ], DepartmentsModule);

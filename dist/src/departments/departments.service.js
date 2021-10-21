@@ -25,7 +25,7 @@ let DepartmentsService = class DepartmentsService {
         return departmen;
     }
     async getAllDepartments() {
-        const department = await this.DepartmenRepository.findAll();
+        const department = await this.DepartmenRepository.findAll({ include: { all: true } });
         return department;
     }
     async remove(DepId) {

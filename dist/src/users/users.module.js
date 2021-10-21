@@ -13,6 +13,7 @@ const users_service_1 = require("./users.service");
 const sequelize_1 = require("@nestjs/sequelize");
 const users_model_1 = require("./users.model");
 const departments_model_1 = require("../departments/departments.model");
+const departments_module_1 = require("../departments/departments.module");
 let UsersModule = class UsersModule {
 };
 UsersModule = __decorate([
@@ -20,7 +21,8 @@ UsersModule = __decorate([
         controllers: [users_controller_1.UsersController],
         providers: [users_service_1.UsersService],
         imports: [
-            sequelize_1.SequelizeModule.forFeature([users_model_1.User, departments_model_1.Department])
+            sequelize_1.SequelizeModule.forFeature([users_model_1.User, departments_model_1.Department]),
+            departments_module_1.DepartmentsModule
         ]
     })
 ], UsersModule);

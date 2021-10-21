@@ -6,8 +6,7 @@ import {Department} from "./departments.model";
 @Injectable()
 export class DepartmentsService {
 
-    constructor(@InjectModel(Department) private DepartmenRepository: typeof Department) {
-    }
+    constructor(@InjectModel(Department) private DepartmenRepository: typeof Department) { }
 
     async creatDepartmen(dto: CreatDepartmenDto){
         const departmen = await this.DepartmenRepository.create(dto);
@@ -15,7 +14,7 @@ export class DepartmentsService {
     }
 
     async getAllDepartments(){
-        const department = await this.DepartmenRepository.findAll();
+        const department = await this.DepartmenRepository.findAll({include: {all: true}});
         return department;
     }
     async remove(DepId : number) {

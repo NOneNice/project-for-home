@@ -1,6 +1,8 @@
 import {BelongsTo, Column, DataType, ForeignKey, HasMany, Model, Table} from "sequelize-typescript";
 import {ApiProperty} from "@nestjs/swagger";
 import {Department} from "../departments/departments.model";
+import sequelize from "sequelize";
+import {type} from "os";
 
 interface UserCreationAttrs {
     name: string;
@@ -20,7 +22,7 @@ export class User extends Model<User, UserCreationAttrs>{
 
     @ForeignKey(()=> Department)
     @Column({type: DataType.INTEGER,onDelete: 'CASCADE'})
-    departmentId: number
+    departmentId: number;
 
 
     @BelongsTo(()=> Department)
