@@ -18,6 +18,9 @@ const create_user_dto_1 = require("./dto/create-user.dto");
 const users_service_1 = require("./users.service");
 const swagger_1 = require("@nestjs/swagger");
 const users_model_1 = require("./users.model");
+const role_auth_decorator_1 = require("../auth/role-auth.decorator");
+const add_role_dto_1 = require("./dto/add-role.dto");
+const auth_guard_1 = require("../auth/auth.guard");
 let UsersController = class UsersController {
     constructor(usersService) {
         this.usersService = usersService;
@@ -27,6 +30,9 @@ let UsersController = class UsersController {
     }
     getAll() {
         return this.usersService.getAllUsers();
+    }
+    addRole(dto) {
+        return this.usersService.addRole(dto);
     }
     remove(id) {
         return this.usersService.remove(id);
@@ -43,12 +49,24 @@ __decorate([
 ], UsersController.prototype, "creat", null);
 __decorate([
     (0, swagger_1.ApiOperation)({ summary: 'Вывести пользователей' }),
-    (0, swagger_1.ApiResponse)({ status: 200, type: [users_model_1.User] }),
+    (0, role_auth_decorator_1.Roles)("ADMIN"),
+    (0, common_1.UseGuards)(auth_guard_1.AuthGuard),
     (0, common_1.Get)(),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", []),
     __metadata("design:returntype", void 0)
 ], UsersController.prototype, "getAll", null);
+__decorate([
+    (0, swagger_1.ApiOperation)({ summary: 'Выдача ролей' }),
+    (0, swagger_1.ApiResponse)({ status: 200 }),
+    (0, role_auth_decorator_1.Roles)("ADMIN"),
+    (0, common_1.UseGuards)(auth_guard_1.AuthGuard),
+    (0, common_1.Post)('/role'),
+    __param(0, (0, common_1.Body)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [add_role_dto_1.AddRoleDto]),
+    __metadata("design:returntype", void 0)
+], UsersController.prototype, "addRole", null);
 __decorate([
     (0, common_1.Delete)(':id'),
     __param(0, (0, common_1.Param)('id')),

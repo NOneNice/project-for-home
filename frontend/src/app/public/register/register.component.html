@@ -1,0 +1,18 @@
+<main class="form-signin">
+  <form [formGroup]="form" (submit)="submit()">
+
+    <h1 class="h3 mb-3 fw-normal">Регистрация</h1>
+
+
+      <input formControlName="name" formContorl class="form-control" placeholder="Введите имя">
+
+      <input formControlName="email" type="email" class="form-control" placeholder="name@example.com">
+
+      <input formControlName="password" type="password" class="form-control" placeholder="пароль">
+
+      <input formControlName="password_confirm" type="password_confirm" class="form-control" placeholder="Павторите пароль">
+
+
+    <button class="w-100 btn btn-lg btn-primary" type="submit">Зарегистрироваться</button>
+  </form>
+</main>

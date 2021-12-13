@@ -13,20 +13,33 @@ const app_routing_module_1 = require("./app-routing.module");
 const app_component_1 = require("./app.component");
 const http_1 = require("@angular/common/http");
 const forms_1 = require("@angular/forms");
+const public_module_1 = require("./public/public.module");
+const secure_module_1 = require("./secure/secure.module");
+const router_1 = require("@angular/router");
+const credential_interceptor_1 = require("./interceptor/credential.interceptor");
+const animations_1 = require("@angular/platform-browser/animations");
 let AppModule = class AppModule {
 };
 AppModule = __decorate([
     (0, core_1.NgModule)({
         declarations: [
-            app_component_1.AppComponent
+            app_component_1.AppComponent,
         ],
         imports: [
             platform_browser_1.BrowserModule,
             app_routing_module_1.AppRoutingModule,
             http_1.HttpClientModule,
-            forms_1.FormsModule
+            forms_1.FormsModule,
+            public_module_1.PublicModule,
+            secure_module_1.SecureModule,
+            router_1.RouterModule,
+            animations_1.BrowserAnimationsModule
         ],
-        providers: [],
+        providers: [{
+                provide: http_1.HTTP_INTERCEPTORS,
+                useClass: credential_interceptor_1.CredentialInterceptor,
+                multi: true
+            }],
         bootstrap: [app_component_1.AppComponent]
     })
 ], AppModule);

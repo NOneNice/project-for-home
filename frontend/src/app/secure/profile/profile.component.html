@@ -1,0 +1,27 @@
+<h3>Аккаунт информация</h3>
+<form [formGroup]="infoForm" (submit)="infoSubmit()">
+  <div class="mb-3">
+    <label>Имя</label>
+    <input formControlName="name" class="form-control" name="Имя">
+  </div>
+  <div class="mb-3">
+    <label>Email</label>
+    <input formControlName="email" class="form-control" name="Email">
+  </div>
+
+  <button class="bth bth-outline-secondary">Сохранить</button>
+</form>
+
+<h3>Смена пароля</h3>
+<form [formGroup]="passwordForm" (submit)="passwordSubmit()">
+  <div class="mb-3">
+    <label>Пароль</label>
+    <input formControlName="password" type="password" class="form-control" name="Пароль">
+  </div>
+  <div class="mb-3">
+    <label>Повторите пароль</label>
+    <input formControlName="password_confirm" type="password" class="form-control" name="Повторите пароль">
+  </div>
+
+  <button class="bth bth-outline-secondary">Сохранить</button>
+</form>

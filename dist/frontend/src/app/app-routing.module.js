@@ -9,7 +9,25 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.AppRoutingModule = void 0;
 const core_1 = require("@angular/core");
 const router_1 = require("@angular/router");
-const routes = [];
+const secure_component_1 = require("./secure/secure.component");
+const public_component_1 = require("./public/public.component");
+const login_component_1 = require("./public/login/login.component");
+const register_component_1 = require("./public/register/register.component");
+const profile_component_1 = require("./secure/profile/profile.component");
+const users_component_1 = require("./secure/users/users.component");
+const routes = [
+    { path: '', component: secure_component_1.SecureComponent,
+        children: [
+            { path: '', pathMatch: 'full', redirectTo: 'users' },
+            { path: 'profile', component: profile_component_1.ProfileComponent },
+            { path: 'users', component: users_component_1.UsersComponent }
+        ] },
+    { path: '', component: public_component_1.PublicComponent,
+        children: [
+            { path: 'login', component: login_component_1.LoginComponent },
+            { path: 'register', component: register_component_1.RegisterComponent },
+        ] },
+];
 let AppRoutingModule = class AppRoutingModule {
 };
 AppRoutingModule = __decorate([

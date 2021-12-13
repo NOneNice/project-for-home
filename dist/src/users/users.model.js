@@ -13,6 +13,8 @@ exports.User = void 0;
 const sequelize_typescript_1 = require("sequelize-typescript");
 const swagger_1 = require("@nestjs/swagger");
 const departments_model_1 = require("../departments/departments.model");
+const role_model_1 = require("../role/role.model");
+const user_roles_model_1 = require("../role/user-roles.model");
 let User = class User extends sequelize_typescript_1.Model {
 };
 __decorate([
@@ -26,6 +28,14 @@ __decorate([
     __metadata("design:type", String)
 ], User.prototype, "name", void 0);
 __decorate([
+    (0, sequelize_typescript_1.Column)({ type: sequelize_typescript_1.DataType.STRING, unique: true, allowNull: false }),
+    __metadata("design:type", String)
+], User.prototype, "email", void 0);
+__decorate([
+    (0, sequelize_typescript_1.Column)({ type: sequelize_typescript_1.DataType.STRING, allowNull: false }),
+    __metadata("design:type", String)
+], User.prototype, "password", void 0);
+__decorate([
     (0, sequelize_typescript_1.ForeignKey)(() => departments_model_1.Department),
     (0, sequelize_typescript_1.Column)({ type: sequelize_typescript_1.DataType.INTEGER, onDelete: 'CASCADE' }),
     __metadata("design:type", Number)
@@ -34,6 +44,10 @@ __decorate([
     (0, sequelize_typescript_1.BelongsTo)(() => departments_model_1.Department),
     __metadata("design:type", departments_model_1.Department)
 ], User.prototype, "Workers", void 0);
+__decorate([
+    (0, sequelize_typescript_1.BelongsToMany)(() => role_model_1.Role, () => user_roles_model_1.UserRoles),
+    __metadata("design:type", Array)
+], User.prototype, "roles", void 0);
 User = __decorate([
     (0, sequelize_typescript_1.Table)({ tableName: 'users' })
 ], User);

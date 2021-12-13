@@ -5,5 +5,6 @@ export declare class DepartmentsService {
     constructor(DepartmenRepository: typeof Department);
     creatDepartmen(dto: CreatDepartmenDto): Promise<Department>;
     getAllDepartments(): Promise<Department[]>;
+    getDepartmentByValue(name: string): Promise<Department>;
     remove(DepId: number): Promise<number>;
 }

@@ -28,6 +28,9 @@ let DepartmentsController = class DepartmentsController {
     getByName(name) {
         return this.departmentsService.getAllDepartments();
     }
+    getByNameDefault(name) {
+        return this.departmentsService.getDepartmentByValue(name);
+    }
     remove(id) {
         return this.departmentsService.remove(id);
     }
@@ -47,6 +50,13 @@ __decorate([
     __metadata("design:paramtypes", [String]),
     __metadata("design:returntype", void 0)
 ], DepartmentsController.prototype, "getByName", null);
+__decorate([
+    (0, common_1.Get)(),
+    __param(0, (0, common_1.Param)('name')),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [String]),
+    __metadata("design:returntype", void 0)
+], DepartmentsController.prototype, "getByNameDefault", null);
 __decorate([
     (0, common_1.Delete)(':id'),
     __param(0, (0, common_1.Param)('id')),

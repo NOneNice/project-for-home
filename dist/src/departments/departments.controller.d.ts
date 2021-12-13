@@ -6,5 +6,6 @@ export declare class DepartmentsController {
     constructor(departmentsService: DepartmentsService);
     creat(dto: CreatDepartmenDto): Promise<Department>;
     getByName(name: string): Promise<Department[]>;
+    getByNameDefault(name: string): Promise<Department>;
     remove(id: number): Promise<number>;
 }

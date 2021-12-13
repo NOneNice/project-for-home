@@ -11,12 +11,24 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.CreateUserDto = void 0;
 const swagger_1 = require("@nestjs/swagger");
+const class_validator_1 = require("class-validator");
 class CreateUserDto {
 }
 __decorate([
+    (0, class_validator_1.IsString)({ message: 'Имя должно быть в строке' }),
     (0, swagger_1.ApiProperty)({ description: 'Введите имя' }),
     __metadata("design:type", String)
 ], CreateUserDto.prototype, "name", void 0);
+__decorate([
+    (0, class_validator_1.IsString)({ message: 'Должен быть строкой' }),
+    (0, class_validator_1.IsEmail)({}, { message: 'Некоректный email' }),
+    __metadata("design:type", String)
+], CreateUserDto.prototype, "email", void 0);
+__decorate([
+    (0, class_validator_1.IsString)({ message: 'Должен быть строкой' }),
+    (0, class_validator_1.Length)(4, 16, { message: 'Не меньше 4 и не больше 16' }),
+    __metadata("design:type", String)
+], CreateUserDto.prototype, "password", void 0);
 __decorate([
     (0, swagger_1.ApiProperty)({ description: 'В каком отделе находится сотрудник:' }),
     __metadata("design:type", Number)

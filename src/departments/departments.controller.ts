@@ -1,8 +1,10 @@
-import {Body, Controller, Delete, Get, Param, Post} from '@nestjs/common';
+import {Body, Controller, Delete, Get, Param, Post, UseGuards} from '@nestjs/common';
 import {CreatDepartmenDto} from "./dto/creat-departmen.dto";
 import {DepartmentsService} from "./departments.service";
 import {ApiOperation, ApiResponse} from "@nestjs/swagger";
 import {Department} from "./departments.model";
+import {Roles} from "../auth/role-auth.decorator";
+import {RolesGuard} from "../auth/roles.guard";
 
 @Controller('departments')
 export class DepartmentsController {
@@ -19,6 +21,11 @@ export class DepartmentsController {
     getByName(name:string){
         return this.departmentsService.getAllDepartments();
     }
+    @Get()
+    getByNameDefault(@Param('name') name: string){
+        return this.departmentsService.getDepartmentByValue(name)
+    }
+
     @Delete(':id')
     remove(@Param('id') id : number)
     {
